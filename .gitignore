@@ -1,0 +1,24 @@
+
+# Documents
+*.odt
+
+# Eclipse files
+.settings
+.project
+.cproject
+.metadata
+
+# Temporary files
+.*.swp
+*.bak
+
+# Generated files
+*.o
+*.a
+*.lo
+*.la
+*.map
+*.elf
+*.hex
+*.bin
+
