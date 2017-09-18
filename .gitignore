@@ -8,6 +8,9 @@
 .cproject
 .metadata
 
+# ST libs
+lib/STM32Cube*
+
 # Temporary files
 .*.swp
 *.bak
@@ -21,4 +24,5 @@
 *.elf
 *.hex
 *.bin
+*.lst
 
