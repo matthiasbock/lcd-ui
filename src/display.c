@@ -65,7 +65,7 @@ void display_init()
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
     HAL_GPIO_Init(DISPLAY_SPI_PORT, &GPIO_InitStruct);
 
-    GPIO_InitStruct.Pin = DISPLAY_CS_PIN | DISPLAY_RS_PIN;
+    GPIO_InitStruct.Pin = DISPLAY_CS_PIN | DISPLAY_RS_PIN | DISPLAY_PWM_PIN;
     GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;

@@ -45,6 +45,6 @@ void display_backlight_on();
 /**
  * Turn off the display's backlight.
  */
-void display_backlight_on();
+void display_backlight_off();
 
 #endif // DISPLAY_H

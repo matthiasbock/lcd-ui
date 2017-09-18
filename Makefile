@@ -68,7 +68,7 @@ $(PROJ_NAME).elf: $(STARTUP_OBJ) $(LIB_OBJS) $(USER_OBJS)
 else
 $(PROJ_NAME).elf: $(STARTUP_OBJ) $(LIB_OBJS) $(USER_OBJS)
 	@rm -f $@
-	@$(CC) $^ $(LDFLAGS) -o $@ 2>&1 | $(LD_COLORS)
+	$(CC) $^ $(LDFLAGS) -o $@ 2>&1 | $(LD_COLORS)
 	@echo $@
 endif
 
