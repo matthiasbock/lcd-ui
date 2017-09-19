@@ -7,3 +7,9 @@
 [submodule "lib/ushell"]
 	path = lib/ushell
 	url = git@github.com:matthiasbock/ushell.git
+[submodule "lib/BD663474"]
+	path = lib/BD663474
+	url = git@github.com:DisplayCore/BD663474.git
+[submodule "lib/XPT2046"]
+	path = lib/XPT2046
+	url = git@github.com:DisplayCore/XPT2046.git
