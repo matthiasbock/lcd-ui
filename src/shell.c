@@ -1,6 +1,7 @@
 
 #include <shell.h>
 #include <ushell.h>
+#include <usart.h>
 #include <stm32f4xx.h>
 
 

@@ -7,6 +7,10 @@
 
 #ifndef DISPLAY_H
 
+// for SPI and GPIO handling
+#include <stm32f4xx.h>
+
+
 /**
  * SPI1
  * ====
@@ -40,11 +44,31 @@ void display_init();
 /**
  * Turn on the display's backlight.
  */
-void display_backlight_on();
+#define backlight_on()      HAL_GPIO_WritePin(DISPLAY_GPIO_PORT, DISPLAY_PWM_PIN, GPIO_PIN_RESET);
 
 /**
  * Turn off the display's backlight.
  */
-void display_backlight_off();
+#define backlight_off()     HAL_GPIO_WritePin(DISPLAY_GPIO_PORT, DISPLAY_PWM_PIN, GPIO_PIN_SET);
+
+/**
+ * Set RS to 1
+ */
+#define LCD_RS_H()  HAL_GPIO_WritePin(DISPLAY_GPIO_PORT, DISPLAY_RS_PIN, GPIO_PIN_SET);
+
+/**
+ * Set RS 0
+ */
+#define LCD_RS_L()  HAL_GPIO_WritePin(DISPLAY_GPIO_PORT, DISPLAY_RS_PIN, GPIO_PIN_RESET);
+
+/**
+ * Set CS to 1
+ */
+#define LCD_CS_H()  HAL_GPIO_WritePin(DISPLAY_GPIO_PORT, DISPLAY_CS_PIN, GPIO_PIN_SET);
+
+/**
+ * Set CS to 0
+ */
+#define LCD_CS_L()  HAL_GPIO_WritePin(DISPLAY_GPIO_PORT, DISPLAY_CS_PIN, GPIO_PIN_RESET);
 
 #endif // DISPLAY_H

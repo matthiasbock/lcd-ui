@@ -6,10 +6,6 @@
 
 
 #ifdef STM32CUBE
-// for SPI and GPIO handling
-#include <stm32f4xx.h>
-
-
 /**
  * SPI interface configuration handle
  */
@@ -34,19 +30,8 @@ SPI_HandleTypeDef display_spi =
 
 static inline void display_spi_init()
 {
-    __HAL_RCC_SPI1_CLK_ENABLE();
-
-    if (HAL_SPI_Init(&display_spi) != HAL_OK)
-    {
-        syslog(LOGLEVEL_ERROR, __FILE__, __LINE__, "Failed to initialize SPI1 peripheral.");
-        return;
-    }
-
-    HAL_NVIC_SetPriority(SPI1_IRQn, 0, 0);
-    HAL_NVIC_EnableIRQ(SPI1_IRQn);
-
-    __HAL_SPI_ENABLE(&display_spi);
-
+    // TODO: Bring this together with the new DSPI code
+    syslog(LOGLEVEL_ERROR, __FILE__, __LINE__, "Failed to initialize SPI1 peripheral.");
     syslog(LOGLEVEL_SUCCESS, __FILE__, __LINE__, "Successfully initialized SPI1 peripheral.");
 }
 
@@ -70,18 +55,6 @@ void display_init()
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
     HAL_GPIO_Init(DISPLAY_GPIO_PORT, &GPIO_InitStruct);
-}
-
-
-void display_backlight_on()
-{
-    HAL_GPIO_WritePin(DISPLAY_GPIO_PORT, DISPLAY_PWM_PIN, GPIO_PIN_RESET);
-}
-
-
-void display_backlight_off()
-{
-    HAL_GPIO_WritePin(DISPLAY_GPIO_PORT, DISPLAY_PWM_PIN, GPIO_PIN_SET);
 }
 #endif
 

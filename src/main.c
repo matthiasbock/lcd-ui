@@ -8,6 +8,9 @@
 // for display control
 #include <display.h>
 
+// LCD
+//#include <BD663474.h>
+
 
 void main()
 {
@@ -15,11 +18,13 @@ void main()
 
     display_init();
 
+//    BD663474 lcd;
+
     while (1)
     {
-        display_backlight_on();
+        backlight_on();
         HAL_Delay(1000);
-        display_backlight_off();
+        backlight_off();
         HAL_Delay(1000);
     }
 }

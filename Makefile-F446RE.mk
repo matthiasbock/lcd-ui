@@ -9,7 +9,7 @@ CMSIS       = $(STM32_SDK)/Drivers/CMSIS
 HAL         = $(STM32_SDK)/Drivers/STM32F4xx_HAL_Driver
 
 STARTUP_SRC = $(CMSIS)/Device/ST/STM32F4xx/Source/Templates/gcc/startup_stm32f446xx.s
-LIB_SRCS    := $(wildcard $(CMSIS)/Device/ST/STM32F4xx/Source/Templates/*.c $(HAL)/Src/*.c $(BSP)/*.c)
+LIB_SRCS    += $(wildcard $(CMSIS)/Device/ST/STM32F4xx/Source/Templates/*.c $(HAL)/Src/*.c $(BSP)/*.c)
 LIB_SRCS    := $(filter-out $(wildcard $(HAL)/Src/*template.c), $(LIB_SRCS))
 
 ifdef USE_LIBOPENCM3
@@ -41,8 +41,11 @@ FPU         = -mfpu=fpv4-sp-d16 -mfloat-abi=hard
 
 # Set Compilation and Linking Flags
 CFLAGS      = $(MCU) $(FPU) \
-              $(DEFINES) $(INCLUDES) \
               -std=gnu11 \
+              $(DEBUG) $(OPTIMIZE) \
+              -ffunction-sections -fdata-sections
+CPPFLAGS    = $(MCU) $(FPU) \
+              -std=c++11 \
               $(DEBUG) $(OPTIMIZE) \
               -ffunction-sections -fdata-sections
 ASFLAGS     = $(MCU) $(FPU) \
