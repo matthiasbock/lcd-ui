@@ -6,7 +6,9 @@ PROJ_NAME = main
 # Toolchain
 ###################################################
 TC          = arm-none-eabi
-CC          = $(TC)-gcc
+#CC          = $(TC)-gcc
+# Projects containing C++ must be compiled with a C++ compiler
+CC          = $(TC)-g++
 CPP         = $(TC)-g++
 AS          = $(TC)-as
 AR          = $(TC)-ar
